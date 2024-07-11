@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Meteor : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float meteorSpeed;
+    public Vector2 currentVec;
+    public float meteorAcceleration;
     private bool isLanched;
     public float growthRate;
     public GameObject Explosion;
