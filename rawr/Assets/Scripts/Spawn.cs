@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class Spawn : MonoBehaviour
 {
@@ -13,7 +15,13 @@ public class Spawn : MonoBehaviour
     {
         if (Input.GetKeyDown(spawnKey))
         {
-            Instantiate(meteor, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,5),quaternion.identity, transform);
+            Debug.Log(Camera.main.transform.up);
+            Vector2 spawnPos = Camera.main.transform.position;
+            spawnPos += (Vector2)(Camera.main.transform.up * 5);
+            spawnPos += (Vector2)(Camera.main.transform.right *
+                                  Random.Range(-8, 8));
+            GameObject obj = Instantiate(meteor, spawnPos,quaternion.identity);
+            obj.GetComponent<Meteor>().SetInitialVelocity();
         }
     }
 }
