@@ -239,8 +239,8 @@ Transform:
   m_GameObject: {fileID: 186707319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -22.6, z: 0}
-  m_LocalScale: {x: 40.10605, y: 40.10605, z: 40.10605}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 216247011}
   - {fileID: 399321150}
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteor: {fileID: 3156928697223083374, guid: 42fa02eaba34a624495098ebf505d51c, type: 3}
+  planet: {fileID: 0}
 --- !u!4 &399321150
 Transform:
   m_ObjectHideFlags: 0
@@ -568,7 +569,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -592,7 +593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -22.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -612,3 +613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 30
+  isZoomed: 0
+  planetCentre: {x: 0, y: 0, z: 0}
+  radius: 23
+  zoomScale: 0
+  zoomRate: 0.5
