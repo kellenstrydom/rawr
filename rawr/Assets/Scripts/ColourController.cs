@@ -8,4 +8,12 @@ public class ColourController : MonoBehaviour
     public List<Transform> allPeople;
 
     public Color colour;
+
+    void AddPerson(PersonMovement person)
+    {
+        
+    }
+    
+    void RemovePerson(PersonMovement person)
+    {}
 }
