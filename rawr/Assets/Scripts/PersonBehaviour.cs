@@ -9,12 +9,14 @@ public class PersonBehaviour : MonoBehaviour
 {
     public float breedChance;
     public float killChance;
+    public float crossChance;
     
     private bool canBreed = false;
     public float breedInterval;
     
     public ColourController _colourController;
 
+    private GameManager _gm;
     
     private void Start()
     {
@@ -27,6 +29,8 @@ public class PersonBehaviour : MonoBehaviour
         }
         _colourController.AddPerson(transform);
         GetComponent<SpriteRenderer>().color = _colourController.colour;
+
+        _gm = GameObject.FindWithTag("Ground").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -47,27 +51,74 @@ public class PersonBehaviour : MonoBehaviour
             return;
         }
         
-        if (!canBreed || !_colourController.canBreed) return;
-        if (_colourController == otherPerson._colourController) // same colour
+        if (!canBreed) return;
+        if (_colourController == otherPerson._colourController && _colourController.canBreed) // same colour
         {
             //Debug.Log("hitt");
             float randValue = Random.value;
             if (randValue < breedChance)
             {
                 Debug.Log("Breeeeeeed");
-                Instantiate(gameObject, transform.position, quaternion.identity);
+                // Instantiate(gameObject, transform.position, quaternion.identity);
+                SpawnPerson(_colourController);
                 StartCoroutine(BreedTimer(breedInterval));
             }
         }
         else
         {
-            
             float randValue = Random.value;
             if (randValue < killChance)
             {
                 otherPerson.GetComponent<PersonBehaviour>().Die();
             }
+            else if (randValue < killChance + crossChance)
+            {
+                ColourController otherController = col.GetComponent<PersonBehaviour>()._colourController;
+
+                bool isBlue = _colourController == _gm.blueController || otherController == _gm.blueController;
+                
+                bool isRed = _colourController == _gm.redController || otherController == _gm.redController;
+                
+                bool isYellow = _colourController == _gm.yellowController || otherController == _gm.yellowController;
+
+                // purple
+                if (isBlue && isRed && _gm.purpleController.canBreed)
+                {
+                    Debug.Log("crosssss Breeeeeeed");
+                    SpawnPerson(_gm.purpleController);
+                    
+                    StartCoroutine(BreedTimer(breedInterval));
+                }
+
+                // orange
+                if (isYellow && isRed && _gm.orangeController.canBreed)
+                {
+                    Debug.Log("crosssss Breeeeeeed");
+                    SpawnPerson(_gm.orangeController);
+                    
+                    StartCoroutine(BreedTimer(breedInterval));
+                }
+
+                // green
+                if (isYellow && isBlue && _gm.greenController.canBreed)
+                {
+                    Debug.Log("crosssss Breeeeeeed");
+                    SpawnPerson(_gm.greenController);
+                    
+                    StartCoroutine(BreedTimer(breedInterval));
+                }
+                
+            }
+            
         }
+    }
+
+
+    void SpawnPerson(ColourController controller)
+    {
+        GameObject person = Instantiate(_gm.person, transform.position, quaternion.identity);
+        person.GetComponent<PersonMovement>()._colourController = controller;
+        person.GetComponent<PersonBehaviour>()._colourController = controller;
     }
     
     IEnumerator BreedTimer(float wait)

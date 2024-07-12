@@ -35,6 +35,8 @@ public class ColourController : MonoBehaviour
         allPeople.Add(person);
         _worldColour.AddPerson(colour);
         if (allPeople.Count >= maxPeople) canBreed = false;
+        
+        if (allBuildings.Count == 0) _buildingSpawner.SpawnBuilding(this);
     }
 
     public void RemovePerson(Transform person)
