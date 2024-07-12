@@ -1224,9 +1224,18 @@ MonoBehaviour:
   blueController: {fileID: 1681034930}
   redController: {fileID: 479435057}
   yellowController: {fileID: 190825265}
-  blueBuildingPrefab: {fileID: 1071012653399468225, guid: f26c18837382ccc49b5ca05b2ff45c76, type: 3}
-  redBuildingPrefab: {fileID: 1331143021365898092, guid: c622544a27b113b449cb75cc113971dc, type: 3}
-  yellowBuildingPrefab: {fileID: 1872117079407352854, guid: 809544885851330488c64f01e5e5ba8b, type: 3}
+  blueBuildingPrefabs:
+  - {fileID: 1071012653399468225, guid: f26c18837382ccc49b5ca05b2ff45c76, type: 3}
+  - {fileID: 1071012653399468225, guid: 52a610884428c0143b2036616dfb0621, type: 3}
+  - {fileID: 1071012653399468225, guid: aaf735237bc13974e88fb912d7199d9a, type: 3}
+  redBuildingPrefabs:
+  - {fileID: 1331143021365898092, guid: c622544a27b113b449cb75cc113971dc, type: 3}
+  - {fileID: 1331143021365898092, guid: 0bbfac78c13130141b7405e1d71947b6, type: 3}
+  - {fileID: 1331143021365898092, guid: c9c8279200e783247805f2c08f2ec8ef, type: 3}
+  yellowBuildingPrefabs:
+  - {fileID: 1872117079407352854, guid: 49a59799c135afc489071d5e08d2bc4c, type: 3}
+  - {fileID: 1872117079407352854, guid: 809544885851330488c64f01e5e5ba8b, type: 3}
+  - {fileID: 1872117079407352854, guid: 03dedb2a98800e9409dea18482e4107a, type: 3}
   blueBuildingButton: {fileID: 1939071034}
   redBuildingButton: {fileID: 1200291985}
   yellowBuildingButton: {fileID: 1686224389}
