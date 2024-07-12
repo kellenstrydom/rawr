@@ -17,6 +17,11 @@ public class PersonBehaviour : MonoBehaviour
     public ColourController _colourController;
 
     private GameManager _gm;
+
+    private Animator deadAni;
+
+    public GameObject loveObj;
+
     
     private void Start()
     {
@@ -31,6 +36,8 @@ public class PersonBehaviour : MonoBehaviour
         GetComponent<SpriteRenderer>().color = _colourController.colour;
 
         _gm = GameObject.FindWithTag("Ground").GetComponent<GameManager>();
+
+        deadAni = GetComponent<Animator>(); 
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -52,17 +59,21 @@ public class PersonBehaviour : MonoBehaviour
         }
         
         if (!canBreed) return;
-        if (_colourController == otherPerson._colourController && _colourController.canBreed) // same colour
+        if (_colourController == otherPerson._colourController) // same colour
         {
-            //Debug.Log("hitt");
-            float randValue = Random.value;
-            if (randValue < breedChance)
+            if (_colourController.canBreed)
             {
-                Debug.Log("Breeeeeeed");
-                // Instantiate(gameObject, transform.position, quaternion.identity);
-                SpawnPerson(_colourController);
-                StartCoroutine(BreedTimer(breedInterval));
+                //Debug.Log("hitt");
+                float randValue = Random.value;
+                if (randValue < breedChance)
+                {
+                    Debug.Log("Breeeeeeed");
+                    // Instantiate(gameObject, transform.position, quaternion.identity);
+                    SpawnPerson(_colourController);
+                    StartCoroutine(BreedTimer(breedInterval));
+                }
             }
+            
         }
         else
         {
@@ -119,6 +130,9 @@ public class PersonBehaviour : MonoBehaviour
         GameObject person = Instantiate(_gm.person, transform.position, quaternion.identity);
         person.GetComponent<PersonMovement>()._colourController = controller;
         person.GetComponent<PersonBehaviour>()._colourController = controller;
+
+        Destroy(Instantiate(loveObj, transform.position, transform.rotation, transform),1.2f);
+        
     }
     
     IEnumerator BreedTimer(float wait)
@@ -131,6 +145,11 @@ public class PersonBehaviour : MonoBehaviour
     public void Die()
     {
         _colourController.RemovePerson(transform);
-        Destroy(gameObject);
+        Destroy(gameObject,3);
+        GetComponent<PersonMovement>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        
+        deadAni.SetBool("die",true);
+        transform.localScale = new Vector3(1, 1, 1) * 1.35f;
     }
 }

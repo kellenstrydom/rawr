@@ -245,8 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a30d375ae71c54c9aa5f6c7bd7d30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breedChance: 0.2
-  killChance: 0
-  crossChance: 1
+  breedChance: 0.3
+  killChance: 0.15
+  crossChance: 0.2
   breedInterval: 2.5
   _colourController: {fileID: 0}
+  loveObj: {fileID: 1078470585052038973, guid: c05eb014d895b8344a4151694b7d7dba, type: 3}
