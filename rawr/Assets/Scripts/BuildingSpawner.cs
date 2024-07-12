@@ -18,32 +18,46 @@ public class BuildingSpawner : MonoBehaviour
 
     void Start()
     {
-        blueBuildingButton.onClick.AddListener(SpawnBlueBuilding);
-        redBuildingButton.onClick.AddListener(SpawnRedBuilding);
-        yellowBuildingButton.onClick.AddListener(SpawnYellowBuilding);
+        // blueBuildingButton.onClick.AddListener(SpawnBlueBuilding);
+        // redBuildingButton.onClick.AddListener(SpawnRedBuilding);
+        // yellowBuildingButton.onClick.AddListener(SpawnYellowBuilding);
     }
 
     void SpawnBlueBuilding()
     {
-        SpawnBuilding(blueController, blueBuildingPrefabs);
+        SpawnBuilding(blueController);
     }
 
     void SpawnRedBuilding()
     {
-        SpawnBuilding(redController, redBuildingPrefabs);
+        SpawnBuilding(redController);
     }
 
     void SpawnYellowBuilding()
     {
-        SpawnBuilding(yellowController, yellowBuildingPrefabs);
+        SpawnBuilding(yellowController);
     }
 
-    void SpawnBuilding(ColourController controller, GameObject[] buildingPrefabs)
+    public void SpawnBuilding(ColourController controller)
     {
         if (controller.allPeople.Count == 0) return;
 
         Transform randomPerson = controller.allPeople[Random.Range(0, controller.allPeople.Count)];
-
+        GameObject[] buildingPrefabs;
+        if (controller == blueController)
+        {
+            buildingPrefabs = blueBuildingPrefabs;
+        }
+        else if (controller == redController)
+        {
+            buildingPrefabs = redBuildingPrefabs;
+        }
+        else
+        {
+            buildingPrefabs = yellowBuildingPrefabs;
+        }
+        
+            
         GameObject buildingPrefab = buildingPrefabs[Random.Range(0, buildingPrefabs.Length)];
         GameObject newBuilding = Instantiate(buildingPrefab, randomPerson.position, Quaternion.identity);
 

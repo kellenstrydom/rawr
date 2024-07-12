@@ -15,7 +15,7 @@ public class PersonBehaviour : MonoBehaviour
     public ColourController _colourController;
 
     
-    private void Awake()
+    private void Start()
     {
         StartCoroutine(BreedTimer(5f));
         
