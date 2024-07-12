@@ -217,7 +217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: eb259f461ab8c7848b4a03632dc257f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -365,6 +365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: person (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 190825265}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -434,6 +438,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 190825265}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -549,6 +557,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 479435057}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -945,6 +957,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 1681034930}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1014,6 +1030,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 479435057}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1083,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 1681034930}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1152,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 479435057}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1221,6 +1249,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 190825265}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1290,6 +1322,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2680060006836858761, guid: 2ba4d925430b5924988291e662582439, type: 3}
+      propertyPath: _colourController
+      value: 
+      objectReference: {fileID: 1681034930}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1377,7 +1413,6 @@ MonoBehaviour:
   speed: 30
   changeDirectionInterval: 5
   currentState: 0
-  _colourController: {fileID: 0}
   curve:
     serializedVersion: 2
     m_Curve: []
@@ -1385,7 +1420,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   stillChance: 0
-  breedChance: 0
+  _colourController: {fileID: 0}
 --- !u!212 &1930624365
 SpriteRenderer:
   m_ObjectHideFlags: 0

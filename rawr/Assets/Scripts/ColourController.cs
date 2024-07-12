@@ -9,14 +9,14 @@ public class ColourController : MonoBehaviour
 
     public Color colour;
 
-    public void AddPerson(PersonMovement person)
+    public void AddPerson(Transform person)
     {
-        allPeople.Add(person.transform);
+        allPeople.Add(person);
     }
 
-    public void RemovePerson(PersonMovement person)
+    public void RemovePerson(Transform person)
     {
-        
+        allPeople.Remove(person);
     }
 
     public void AddBuilding(Transform building)

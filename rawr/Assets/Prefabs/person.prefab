@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
-  speed: 6
-  changeDirectionInterval: 1
+  speed: 5
+  changeDirectionInterval: 2
   currentState: 0
   _colourController: {fileID: 0}
   curve:
