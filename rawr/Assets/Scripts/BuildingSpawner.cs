@@ -18,6 +18,7 @@ public class BuildingSpawner : MonoBehaviour
     public Button redBuildingButton;
     public Button yellowBuildingButton;
 
+
     void Start()
     {
         // blueBuildingButton.onClick.AddListener(SpawnBlueBuilding);
