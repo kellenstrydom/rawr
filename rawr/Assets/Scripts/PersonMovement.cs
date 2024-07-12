@@ -2,12 +2,23 @@ using UnityEngine;
 
 public class PersonMovement : MonoBehaviour
 {
+    public enum State
+    {
+        still,
+        left,
+        right
+    }
+    
     public Transform circle; 
-    public float speed = 50.0f;
+    public float speed = 30.0f;
     public float changeDirectionInterval = 2.0f;
+    public State currentState;
+    
+    
 
     private float radius;
     private float angle; 
+    
     private bool moveClockwise; 
     private float nextDirectionChangeTime; 
 
