@@ -16,6 +16,10 @@ public class ColourController : MonoBehaviour
 
     public float chanceSpawning;
     public float chanceRate;
+    public float spawnInterval;
+
+    public int maxPeople;
+    public bool canBreed = true;
     
     
 
@@ -23,19 +27,21 @@ public class ColourController : MonoBehaviour
     {
         _worldColour = GameObject.FindWithTag("Ground").GetComponent<WorldColour>();
         _buildingSpawner = GameObject.FindWithTag("Ground").GetComponent<BuildingSpawner>();
-        StartCoroutine(SpawnTimer(5f));
+        StartCoroutine(SpawnTimer(spawnInterval));
     }
 
     public void AddPerson(Transform person)
     {
         allPeople.Add(person);
         _worldColour.AddPerson(colour);
+        if (allPeople.Count >= maxPeople) canBreed = false;
     }
 
     public void RemovePerson(Transform person)
     {
         allPeople.Remove(person);
         _worldColour.RemovePerson(colour);
+        if (allPeople.Count < maxPeople) canBreed = true;
     }
 
     public void AddBuilding(Transform building)
