@@ -22,12 +22,12 @@ public class Spawn : MonoBehaviour
     {
         if (Input.GetKeyDown(spawnKey) || Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - planet.position).magnitude > 27f)
+            if ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - planet.position).magnitude > 30f)
                 return;
             
             transform.up = ((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)planet.position).normalized;
             Vector3 spawnPos = planet.position;
-            spawnPos += (transform.up * 28);
+            spawnPos += (transform.up * 32f);
             spawnPos += (transform.right * Random.Range(-8, 8));
             
             GameObject obj = Instantiate(meteor, spawnPos,quaternion.identity);

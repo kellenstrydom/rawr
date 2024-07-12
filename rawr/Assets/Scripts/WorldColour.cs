@@ -8,25 +8,24 @@ public class WorldColour : MonoBehaviour
 
     void Start()
     {
-        peopleColors.Add(Color.red);
-        peopleColors.Add(Color.blue);
-        peopleColors.Add(Color.yellow);
+        // peopleColors.Add(Color.red);
+        // peopleColors.Add(Color.blue);
+        // peopleColors.Add(Color.yellow);
 
-        UpdateAverageColor();
+        //UpdateAverageColor();
     }
 
     private void Update()
     {
-        UpdateAverageColor(); 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //AddPerson(new Color(1, 0.5f, 0));
-            AddPerson(Color.red); 
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            RemovePerson(Color.red);
-        }
+        // if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     //AddPerson(new Color(1, 0.5f, 0));
+        //     AddPerson(Color.red); 
+        // }
+        // if (Input.GetKeyDown(KeyCode.B))
+        // {
+        //     RemovePerson(Color.red);
+        // }
     }
 
     public void AddPerson(Color color)
