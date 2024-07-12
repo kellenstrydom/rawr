@@ -3,38 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-
+using UnityEngine.Serialization;
 public class Meteor : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Transform planet;
     public float meteorSpeed;
+    public Vector2 currentVec;
+    public float meteorAcceleration;
     private bool isLanched;
     public float growthRate;
     public GameObject Explosion;
     public float explosionTimeOut;
+    public Transform blast; 
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        isLanched = false;
+        planet = GameObject.FindWithTag("Ground").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isLanched)
-        {
-            transform.localScale *= 1 + growthRate * Time.deltaTime;
-            return;
-        }
+       
+        transform.localScale *= 1 + growthRate * Time.deltaTime;
         
-        if (Input.GetKeyUp(Spawn.spawnKey))
-        {
-            Vector2 dir = ((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
-            rb.velocity = dir * meteorSpeed;
-            isLanched = true;
-        }
+        ApplyGravity();
+        transform.position += ((Vector3)currentVec * Time.deltaTime);
+        transform.up = -currentVec.normalized; 
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -42,7 +39,8 @@ public class Meteor : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Explode();
-        }    }
+        }    
+    }
     
     private void Explode()
     {
@@ -51,5 +49,19 @@ public class Meteor : MonoBehaviour
         Destroy(obj, explosionTimeOut);
         
         Destroy(gameObject);
+    }
+
+    void ApplyGravity()
+    {
+        //transform.up = (planet.position - transform.position).normalized;
+        currentVec += (Vector2)((meteorAcceleration * Time.deltaTime) * (planet.position - transform.position).normalized);
+    }
+    public void SetInitialVelocity()
+    {
+        currentVec = Vector2.zero;
+        Vector3 dir = Vector3.Normalize(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        
+        currentVec += (Vector2)dir * meteorSpeed;
+        Debug.Log(currentVec.magnitude);
     }
 }
