@@ -46,7 +46,7 @@ public class Meteor : MonoBehaviour
     
     private void Explode()
     {
-        GameObject obj = Instantiate(Explosion, transform.position, quaternion.identity, transform.parent);
+        GameObject obj = Instantiate(Explosion, transform.position, quaternion.identity);
         obj.transform.localScale = (new Vector3(1, 1, 1)) * transform.localScale.y/0.6f;
         Destroy(obj, explosionTimeOut);
         

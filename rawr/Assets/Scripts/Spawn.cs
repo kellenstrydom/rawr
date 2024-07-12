@@ -13,7 +13,7 @@ public class Spawn : MonoBehaviour
     {
         if (Input.GetKeyDown(spawnKey))
         {
-            Instantiate(meteor, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,5),quaternion.identity, transform);
+            Instantiate(meteor, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,5), quaternion.identity);
         }
     }
 }

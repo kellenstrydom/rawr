@@ -6,13 +6,10 @@ using System.Collections.Generic;
 
 public class DinoBehaviour : MonoBehaviour
 {
-    private Rigidbody2D rb;
-
-    private Transform planet;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
