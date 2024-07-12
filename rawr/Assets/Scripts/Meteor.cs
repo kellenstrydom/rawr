@@ -15,6 +15,7 @@ public class Meteor : MonoBehaviour
     public float growthRate;
     public GameObject Explosion;
     public float explosionTimeOut;
+    public Transform blast; 
     
     // Start is called before the first frame update
     void Awake()
@@ -25,11 +26,12 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         transform.localScale *= 1 + growthRate * Time.deltaTime;
         
         ApplyGravity();
-        transform.Translate(currentVec * Time.deltaTime);
-        
+        transform.position += ((Vector3)currentVec * Time.deltaTime);
+        transform.up = -currentVec.normalized; 
     }
 
     private void OnCollisionStay2D(Collision2D collision)

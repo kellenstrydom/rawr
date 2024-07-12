@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229854090102415824}
   m_LocalRotation: {x: -0.51479584, y: 0.4847528, z: 0.51479584, w: 0.4847528}
-  m_LocalPosition: {x: -0.07, y: -0.03, z: 0}
+  m_LocalPosition: {x: -0.16, y: -0.91, z: 1}
   m_LocalScale: {x: 0.13333331, y: 0.13333331, z: 0.13333331}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4857,12 +4857,12 @@ Transform:
   m_GameObject: {fileID: 3156928697223083374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.93, y: 4.95, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5801548936865307682}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3369955123655466975
 SpriteRenderer:
@@ -4905,7 +4905,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3994f12421d0ef4da4b3f74d5af5908, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4977,7 +4977,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.5
 --- !u!114 &-4016998847093232683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4990,9 +4990,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bea2d6178658f640949e90e34a84afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteorSpeed: 7
+  planet: {fileID: 0}
+  meteorSpeed: 4
   currentVec: {x: 0, y: 0}
-  meteorAcceleration: 0
+  meteorAcceleration: 4
   growthRate: 0.5
   Explosion: {fileID: 3156928697223083374, guid: 64bc4746634ffc543a10133acade7edf, type: 3}
-  explosionTimeOut: 1.2
+  explosionTimeOut: 0.5
+  blast: {fileID: 5801548936865307682}
