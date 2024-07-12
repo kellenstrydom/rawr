@@ -11,13 +11,14 @@ public class PersonBehaviour : MonoBehaviour
     public float killChance;
     
     private bool canBreed = false;
+    public float breedInterval;
     
     public ColourController _colourController;
 
     
     private void Start()
     {
-        StartCoroutine(BreedTimer(5f));
+        StartCoroutine(BreedTimer(breedInterval));
         
         if (_colourController == null)
         {
@@ -46,7 +47,7 @@ public class PersonBehaviour : MonoBehaviour
             return;
         }
         
-        if (!canBreed) return;
+        if (!canBreed || !_colourController.canBreed) return;
         if (_colourController == otherPerson._colourController) // same colour
         {
             //Debug.Log("hitt");
@@ -55,12 +56,17 @@ public class PersonBehaviour : MonoBehaviour
             {
                 Debug.Log("Breeeeeeed");
                 Instantiate(gameObject, transform.position, quaternion.identity);
-                StartCoroutine(BreedTimer(5f));
+                StartCoroutine(BreedTimer(breedInterval));
             }
         }
         else
         {
-            otherPerson.GetComponent<PersonBehaviour>().Die();
+            
+            float randValue = Random.value;
+            if (randValue < killChance)
+            {
+                otherPerson.GetComponent<PersonBehaviour>().Die();
+            }
         }
     }
     

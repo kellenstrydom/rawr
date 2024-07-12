@@ -7,7 +7,9 @@ public class BuildingSpawner : MonoBehaviour
     public ColourController blueController;
     public ColourController redController;
     public ColourController yellowController;
-
+    
+    public GameObject[] buildingPrefabs;
+    
     public GameObject[] blueBuildingPrefabs;
     public GameObject[] redBuildingPrefabs;
     public GameObject[] yellowBuildingPrefabs;
@@ -43,23 +45,13 @@ public class BuildingSpawner : MonoBehaviour
         if (controller.allPeople.Count == 0) return;
 
         Transform randomPerson = controller.allPeople[Random.Range(0, controller.allPeople.Count)];
-        GameObject[] buildingPrefabs;
-        if (controller == blueController)
-        {
-            buildingPrefabs = blueBuildingPrefabs;
-        }
-        else if (controller == redController)
-        {
-            buildingPrefabs = redBuildingPrefabs;
-        }
-        else
-        {
-            buildingPrefabs = yellowBuildingPrefabs;
-        }
-        
-            
+
         GameObject buildingPrefab = buildingPrefabs[Random.Range(0, buildingPrefabs.Length)];
         GameObject newBuilding = Instantiate(buildingPrefab, randomPerson.position, Quaternion.identity);
+
+        newBuilding.GetComponent<buildings>().Initialise(controller);
+        
+        
 
         controller.AddBuilding(newBuilding.transform);
     }
