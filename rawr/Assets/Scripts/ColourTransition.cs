@@ -5,7 +5,7 @@ using System.Collections;
 public class ContinuousColorTransition : MonoBehaviour
 {
     public Image panelImage; 
-    public float duration = 2f; 
+    public float duration = 1f; 
 
     private void Start()
     {
