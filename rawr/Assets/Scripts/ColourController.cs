@@ -21,11 +21,11 @@ public class ColourController : MonoBehaviour
 
     public void AddBuilding(Transform building)
     {
-        
+        allBuildings.Add(building);
     }
     
     public void RemoveBuilding(Transform building)
     {
-        
+        allBuildings.Remove(building);
     }
 }

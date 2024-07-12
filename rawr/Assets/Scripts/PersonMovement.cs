@@ -27,15 +27,13 @@ public class PersonMovement : MonoBehaviour
     public float speed = 30.0f;
     public float changeDirectionInterval = 2.0f;
     public State currentState;
-    public ColourController _colourController;
 
     public AnimationCurve curve;
 
     public float stillChance;
-
-    public float breedChance;
     
-    private bool canBreed = false;
+    public ColourController _colourController;
+
     
     private float radius;
     private float angle; 
@@ -52,14 +50,7 @@ public class PersonMovement : MonoBehaviour
             Debug.LogError("Circle transform is not assigned.");
             return;
         }
-
-        if (_colourController == null)
-        {
-            Debug.Log("No colour controller");
-            return;
-        }
-        _colourController.allPeople.Add(transform);
-        GetComponent<SpriteRenderer>().color = _colourController.colour;
+        
         
         StartCoroutine(Tick(changeDirectionInterval));
         
@@ -69,7 +60,7 @@ public class PersonMovement : MonoBehaviour
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         UpdatePositionAndRotation();
 
-        StartCoroutine(BreedTimer(5f));
+        
         //moveClockwise = Random.value < 0.5f;
 
 
@@ -199,47 +190,5 @@ public class PersonMovement : MonoBehaviour
         StartCoroutine(Tick(changeDirectionInterval + tickVariance));
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Explosion"))
-        {
-            Die();
-        }
-        
-        if (!col.CompareTag("people")) return;
-        
-        //Debug.Log("Collided with: " + col.gameObject.name);
-        PersonMovement otherPerson = col.transform.GetComponent<PersonMovement>();
-
-        if (otherPerson == null)
-        {
-            Debug.LogWarning("ColourController component not found on the collided object.");
-            return;
-        }
-        
-        if (!canBreed) return;
-        if (_colourController == otherPerson._colourController) // same colour
-        {
-            //Debug.Log("hitt");
-            float randValue = Random.value;
-            if (randValue < breedChance)
-            {
-                Debug.Log("Breeeeeeed");
-                Instantiate(gameObject, transform.position, quaternion.identity);
-                StartCoroutine(BreedTimer(5f));
-            }
-        }
-    }
-
-    IEnumerator BreedTimer(float wait)
-    {
-        canBreed = false;
-        yield return new WaitForSeconds(wait);
-        canBreed = true;
-    }
-
-    void Die()
-    {
-        Destroy(gameObject);
-    }
+    
 }
