@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1207577173885639881
 SpriteRenderer:
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
-  speed: 6
+  speed: 10
   changeDirectionInterval: 1
   currentState: 0
   curve:
@@ -245,5 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a30d375ae71c54c9aa5f6c7bd7d30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breedChance: 0.07
+  breedChance: 0.2
+  killChance: 0.1
+  breedInterval: 2.5
   _colourController: {fileID: 0}

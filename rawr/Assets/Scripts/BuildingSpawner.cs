@@ -7,7 +7,9 @@ public class BuildingSpawner : MonoBehaviour
     public ColourController blueController;
     public ColourController redController;
     public ColourController yellowController;
-
+    
+    public GameObject[] buildingPrefabs;
+    
     public GameObject[] blueBuildingPrefabs;
     public GameObject[] redBuildingPrefabs;
     public GameObject[] yellowBuildingPrefabs;
@@ -19,27 +21,27 @@ public class BuildingSpawner : MonoBehaviour
 
     void Start()
     {
-        blueBuildingButton.onClick.AddListener(SpawnBlueBuilding);
-        redBuildingButton.onClick.AddListener(SpawnRedBuilding);
-        yellowBuildingButton.onClick.AddListener(SpawnYellowBuilding);
+        // blueBuildingButton.onClick.AddListener(SpawnBlueBuilding);
+        // redBuildingButton.onClick.AddListener(SpawnRedBuilding);
+        // yellowBuildingButton.onClick.AddListener(SpawnYellowBuilding);
     }
 
     void SpawnBlueBuilding()
     {
-        SpawnBuilding(blueController, blueBuildingPrefabs);
+        SpawnBuilding(blueController);
     }
 
     void SpawnRedBuilding()
     {
-        SpawnBuilding(redController, redBuildingPrefabs);
+        SpawnBuilding(redController);
     }
 
     void SpawnYellowBuilding()
     {
-        SpawnBuilding(yellowController, yellowBuildingPrefabs);
+        SpawnBuilding(yellowController);
     }
 
-    void SpawnBuilding(ColourController controller, GameObject[] buildingPrefabs)
+    public void SpawnBuilding(ColourController controller)
     {
         if (controller.allPeople.Count == 0) return;
 
@@ -47,6 +49,10 @@ public class BuildingSpawner : MonoBehaviour
 
         GameObject buildingPrefab = buildingPrefabs[Random.Range(0, buildingPrefabs.Length)];
         GameObject newBuilding = Instantiate(buildingPrefab, randomPerson.position, Quaternion.identity);
+
+        newBuilding.GetComponent<buildings>().Initialise(controller);
+        
+        
 
         controller.AddBuilding(newBuilding.transform);
     }

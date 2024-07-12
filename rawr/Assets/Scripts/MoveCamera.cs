@@ -59,7 +59,7 @@ public class MoveCamera : MonoBehaviour
     void ApplyZoom()
     {
         transform.position = Vector3.Lerp(planetCentre, planetCentre + (transform.up * radius), zoomScale) + Vector3.back * 10;
-        gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(25f, 5f, zoomScale);
+        gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(25f, 10f, zoomScale);
     }
 
     void Rotate()
