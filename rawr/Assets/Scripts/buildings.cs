@@ -8,9 +8,12 @@ public class buildings : MonoBehaviour
 {
     public int index;
     public ColourController controller;
+    public AudioSource audioSource;
+    public AudioClip buildFX;
 
     public void Initialise(ColourController controller)
     {
+        audioSource.PlayOneShot(buildFX, 0.2f);
         this.controller = controller;
         Transform planet = GameObject.FindWithTag("Ground").transform;
         transform.up = (transform.position - planet.position).normalized;

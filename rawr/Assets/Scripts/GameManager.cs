@@ -12,4 +12,6 @@ public class GameManager : MonoBehaviour
     public ColourController greenController;
 
     public GameObject person;
+
+    public AudioSource audioSource;
 }
