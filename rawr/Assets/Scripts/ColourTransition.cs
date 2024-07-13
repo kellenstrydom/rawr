@@ -14,6 +14,8 @@ public class ContinuousColorTransition : MonoBehaviour
             panelImage = GetComponent<Image>();
         }
 
+        Time.timeScale = 0;
+
         StartCoroutine(ColorTransitionLoop());
     }
 
@@ -32,10 +34,16 @@ public class ContinuousColorTransition : MonoBehaviour
         float time = 0f;
         while (time < duration)
         {
-            time += Time.deltaTime;
+            time += Time.fixedUnscaledDeltaTime;
             panelImage.color = Color.Lerp(startColor, endColor, time / duration);
             yield return null;
         }
         panelImage.color = endColor;
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        gameObject.SetActive(false);
     }
 }
