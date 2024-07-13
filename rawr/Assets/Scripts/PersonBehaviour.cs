@@ -22,6 +22,8 @@ public class PersonBehaviour : MonoBehaviour
 
     public GameObject loveObj;
 
+    public AudioSource audioSource; 
+    public AudioClip loveSFX; 
     
     private void Start()
     {
@@ -131,7 +133,9 @@ public class PersonBehaviour : MonoBehaviour
         person.GetComponent<PersonMovement>()._colourController = controller;
         person.GetComponent<PersonBehaviour>()._colourController = controller;
 
+        audioSource.PlayOneShot(loveSFX, 0.4f); 
         Destroy(Instantiate(loveObj, transform.position, transform.rotation, transform),1.2f);
+        
         
     }
     

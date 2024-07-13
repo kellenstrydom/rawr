@@ -15,8 +15,12 @@ public class Meteor : MonoBehaviour
     public float growthRate;
     public GameObject Explosion;
     public float explosionTimeOut;
-    public Transform blast; 
-    
+    public Transform blast;
+
+    public AudioSource audioSource;
+    public AudioClip swooshFX;
+    public AudioClip boomFX;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,8 +50,8 @@ public class Meteor : MonoBehaviour
     {
         GameObject obj = Instantiate(Explosion, transform.position, quaternion.identity);
         obj.transform.localScale = (new Vector3(1, 1, 1)) * transform.localScale.y/0.6f;
+        audioSource.PlayOneShot(boomFX, 1); 
         Destroy(obj, explosionTimeOut);
-        
         Destroy(gameObject);
     }
 
@@ -63,5 +67,7 @@ public class Meteor : MonoBehaviour
         
         currentVec += (Vector2)dir * meteorSpeed;
         Debug.Log(currentVec.magnitude);
+
+        audioSource.PlayOneShot(swooshFX, 1); 
     }
 }
