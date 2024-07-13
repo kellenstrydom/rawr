@@ -44,6 +44,7 @@ public class ContinuousColorTransition : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1;
+        GameObject.FindWithTag("Ground").GetComponent<GameManager>().allowInput = true;
         gameObject.SetActive(false);
     }
 }

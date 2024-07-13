@@ -20,6 +20,8 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!planet.GetComponent<GameManager>().allowInput) return;
+        
         if (Input.GetKeyDown(spawnKey) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             if ((Camera.main.ScreenToWorldPoint(Input.mousePosition) - planet.position).magnitude > 30f)

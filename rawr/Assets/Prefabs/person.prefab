@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breedChance: 0.13
-  killChance: 0.15
+  killChance: 0.08
   crossChance: 0.2
   breedInterval: 2.5
   _colourController: {fileID: 0}
